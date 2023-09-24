@@ -44,13 +44,12 @@ const CreateProductPage = () => {
   return (
     <div className='
         flex 
-        justify-center i
-        tems-center
+        justify-center
+        items-center
         w-[100%]
         h-[96vh]
         '>
       <form className='
-        border border-red-500 
         flex flex-col items-center 
         w-[400px] gap-12 py-4'
         onSubmit={submitUserDataHandler}
@@ -112,7 +111,7 @@ const CreateProductPage = () => {
           <option value="false">No es Admin</option>
         </select>
 
-        <button>Crear Usuario</button>
+        <button className="w-[30%] border p-1 rounded-md text-gray-500 hover:bg-black hover:text-white transition-all">Crear Usuario</button>
       </form>
     </div>
   )

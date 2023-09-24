@@ -14,6 +14,9 @@ export const login = async (email, password) => {
 }
 
 export const register = async (data, file) => {
+
+    const token = JSON.parse(localStorage.getItem("token"))
+
     const { username, fullName, email, password, tel, isAdmin } = data
     try {
         let formData = new FormData()
@@ -27,6 +30,7 @@ export const register = async (data, file) => {
 
         const config = {
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'multipart/form-data'
             }
         }

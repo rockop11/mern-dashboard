@@ -25,6 +25,4 @@ export function useAuth() {
 
 
     return storagedUser
-
-
 }

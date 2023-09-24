@@ -16,9 +16,10 @@ export const AuthContextProvider = ({ children }) => {
     const loginHandler = async (email, password) => {
         const { token, urlImage, errors } = await login(email, password)
         if (token) {
+            localStorage.setItem('token', JSON.stringify(token))
             const decodedToken = decodeToken(token)
             const { user } = decodedToken
-            localStorage.setItem('user', JSON.stringify({...user, urlImage}))
+            localStorage.setItem('user', JSON.stringify({ ...user, urlImage }))
             router.push("/")
         } else {
             return errors
@@ -27,6 +28,7 @@ export const AuthContextProvider = ({ children }) => {
 
     const logout = () => {
         localStorage.removeItem("user")
+        localStorage.removeItem("token")
         router.push("/login")
     }
 

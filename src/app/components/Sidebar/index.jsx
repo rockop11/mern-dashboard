@@ -2,14 +2,32 @@
 
 import Link from "next/link"
 import { FiChevronsRight, FiChevronsLeft } from "react-icons/fi"
-import { BiUser, BiStore } from "react-icons/bi"
+import { BiUser, BiStore, BiHome } from "react-icons/bi"
 
 export const Sidebar = ({ handler, toggleSidebar }) => {
+
+    const sidebarOptions = [
+        {
+            title: "Inicio",
+            icon: <BiHome size={24} />,
+            link: "/"
+        },
+        {
+            title: "Productos",
+            icon: <BiStore size={24} />,
+            link: "/products"
+        },
+        {
+            title: "Administradores",
+            icon: < BiUser size={24} />,
+            link: "/admins"
+        }
+    ]
 
     return (
         <div className={`
             border
-            ${toggleSidebar ? "w-[22%]" : "w-[4%]"}
+            ${toggleSidebar ? "w-[20%]" : "w-[4%]"}
             h-[95vh]
             shadow-md
             flex
@@ -26,19 +44,21 @@ export const Sidebar = ({ handler, toggleSidebar }) => {
 
 
             <ul className={`flex flex-col justify-center gap-4 ${toggleSidebar && "pl-2"}`}>
-                <li className="flex cursor-pointer items-center gap-2">
-                    <BiStore size={24} />
-                    {
-                        toggleSidebar && <p>Productos</p>
-                    }
-                </li>
+                {
+                    sidebarOptions.map((item, i) => {
+                        return (
+                            <Link href={item.link} key={i}>
+                                <li className="flex cursor-pointer items-center gap-2">
+                                    {item.icon}
+                                    {
+                                        toggleSidebar && <p>{item.title}</p>
+                                    }
+                                </li>
+                            </Link>
+                        )
+                    })
+                }
 
-                <li className="flex cursor-pointer items-center gap-2">
-                    <BiUser size={24} />
-                    {
-                        toggleSidebar && <p>Administradores</p>
-                    }
-                </li>
             </ul>
         </div>
     )

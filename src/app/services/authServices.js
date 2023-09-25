@@ -40,7 +40,6 @@ export const register = async (data, file) => {
 
     } catch (err) {
         const errors = err.response.data
-        console.log("catch register", errors);
         return errors
     }
 }

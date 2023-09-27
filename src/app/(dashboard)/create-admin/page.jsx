@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { ErrorModal } from "@/app/components";
 import { register } from "@/app/services/authServices"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -42,6 +41,7 @@ const CreateProductPage = () => {
     })
   }
 
+
   const submitUserDataHandler = async (e) => {
     e.preventDefault()
     const { errors } = await register(userData, userData.image)
@@ -49,16 +49,26 @@ const CreateProductPage = () => {
     if (errors) {
       setErrorsForm(errors)
 
-      toast.error("no se pudo crear usuario", {
-        position: "top-center",
-        autoClose: false,
-        theme: "colored",
-      });
+      const ErrorMsg = ({ closeToast, toastProps }) => (
+        <div className="flex flex-col gap-4">
+          <h3>No se pudo crear el usuario:</h3>
+          {
+            errors.map((error, i) => {
+              return <li key={i}>{error.msg}</li>
+            })
+          }
+        </div>
+      )
+
+      toast.error(<ErrorMsg />, {
+        position: 'top-center',
+        autoClose: 'false',
+        theme: 'colored',
+      })
     }
   }
 
-  useEffect(() => {
-  }, [errorsForm])
+  useEffect(() => {}, [errorsForm])
 
   return (
     <div className='
@@ -134,26 +144,6 @@ const CreateProductPage = () => {
 
         <button className="w-[30%] border p-1 rounded-md text-gray-500 hover:bg-black hover:text-white transition-all">Crear Usuario</button>
       </form>
-
-      {
-        errorsForm.length !== 0 && (
-          <ErrorModal errors={errorsForm}/>
-        )
-      }
-
-
-      {/* {
-        errorsForm.length !== 0 && (
-          <div className='
-            border border-blue-500
-            flex flex-col items-center 
-            w-[40%] gap-12 py-4'>
-            {errorsForm.map((err, i) => {
-              return <p key={i}>{err.msg}</p>
-            })}
-          </div>
-        )
-      } */}
 
     </div>
   )

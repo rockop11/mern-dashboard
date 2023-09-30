@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const login = async (email, password) => {
     try {
-        const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
+        const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_AUTH_URL}/login`, {
             email,
             password
         })
@@ -18,6 +18,7 @@ export const register = async (data, file) => {
     const token = JSON.parse(localStorage.getItem("token"))
 
     const { username, fullName, email, password, tel, isAdmin } = data
+    
     try {
         let formData = new FormData()
         formData.append('username', username)
@@ -35,9 +36,11 @@ export const register = async (data, file) => {
             }
         }
 
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/register`, formData, config)
-        console.log("respuesta post registro", response);
-
+        const response = await axios.post(`
+            ${process.env.NEXT_PUBLIC_API_AUTH_URL}/register`,
+            formData,
+            config
+        )
     } catch (err) {
         const errors = err.response.data
         return errors

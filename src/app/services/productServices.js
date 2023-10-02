@@ -46,7 +46,6 @@ export const createProduct = async (data, files) => {
         )
         console.log("respuesta post registro", response);
     } catch (err) {
-        console.log(err);
         const errors = err.response.data
         return errors
     }

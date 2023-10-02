@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const CreateProductPage = () => {
+const CreateAdminPage = () => {
   const usernameRef = useRef(null)
   const fullNameRef = useRef(null)
   const emailRef = useRef(null)
@@ -149,5 +149,5 @@ const CreateProductPage = () => {
   )
 }
 
-export default CreateProductPage
+export default CreateAdminPage
 

@@ -27,6 +27,8 @@ const CreateProductPage = () => {
         images: []
     })
 
+    const [errorsForm, setErrorForm] = useState([])
+
     const productDataHandler = () => {
         setProductData({
             ...productData,
@@ -64,7 +66,28 @@ const CreateProductPage = () => {
 
     const submitProductDataHandler = async (e) => {
         e.preventDefault()
-        const response = await createProduct(productData, productData.images)
+        const { errors } = await createProduct(productData, productData.images)
+
+        if (errors) {
+            setErrorForm(errors)
+
+            const ErrorMsg = ({ closeToast, toastProps }) => (
+                <div className="flex flex-col gap-4">
+                    <h3>No se pudo crear el Producto:</h3>
+                    {
+                        errors.map((error, i) => {
+                            return <li key={i}>{error.msg}</li>
+                        })
+                    }
+                </div>
+            )
+
+            toast.error(<ErrorMsg />, {
+                position: 'top-center',
+                autoClose: 'false',
+                theme: 'colored',
+            })
+        }
     }
 
 
@@ -78,6 +101,7 @@ const CreateProductPage = () => {
             p-4
             overflow-scroll
         '>
+            <ToastContainer closeOnClick position="top-center" />
             <h1>Agrega un Producto</h1>
             <form
                 onSubmit={submitProductDataHandler}
@@ -87,26 +111,26 @@ const CreateProductPage = () => {
             '>
                 <input type="text"
                     placeholder="Nombre de producto"
-                    className={`border-b w-[80%] focus:outline-none`}
+                    className={`border-b w-[80%] focus:outline-none ${errorsForm.length && 'border-b border-pink-600'}`}
                     ref={titleRef} onChange={productDataHandler}
                 />
 
                 <input type="number"
                     placeholder="Precio"
-                    className={`border-b w-[80%] focus:outline-none`}
+                    className={`border-b w-[80%] focus:outline-none ${errorsForm.length && 'border-b border-pink-600'}`}
                     ref={priceRef} onChange={productDataHandler}
                 />
 
                 <input type="number"
                     placeholder="Descuento"
-                    className={`border-b w-[80%] focus:outline-none`}
+                    className={`border-b w-[80%] focus:outline-none ${errorsForm.length && 'border-b border-pink-600'}`}
                     ref={discountRef}
                     onChange={productDataHandler}
                 />
 
                 <input type="number"
                     placeholder="Stock"
-                    className={`border-b w-[80%] focus:outline-none`}
+                    className={`border-b w-[80%] focus:outline-none ${errorsForm.length && 'border-b border-pink-600'}`}
                     ref={stockRef}
                     onChange={productDataHandler}
                 />
@@ -116,7 +140,7 @@ const CreateProductPage = () => {
                     cols="30"
                     rows="10"
                     placeholder="Ingrese la descripción"
-                    className={`border rounded-md w-[80%] p-2 focus:outline-none`}
+                    className={`border w-[80%] focus:outline-none ${errorsForm.length && 'border border-pink-600'}`}
                     ref={descriptionRef}
                     onChange={productDataHandler}
                 />
@@ -165,7 +189,7 @@ const CreateProductPage = () => {
 
 
                 <label htmlFor="images"
-                    className={`border-b w-[80%] focus:outline-none`}
+                    className={`border-b w-[80%] focus:outline-none ${errorsForm.length && 'border-b border-pink-600'}`}
                 >
                     ingresa imagenes del producto
                     <input type="file"

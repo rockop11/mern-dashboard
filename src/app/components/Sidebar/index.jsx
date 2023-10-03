@@ -27,7 +27,7 @@ export const Sidebar = ({ handler, toggleSidebar }) => {
     return (
         <div className={`
             border
-            ${toggleSidebar ? "w-[20%]" : "w-[4%]"}
+            ${toggleSidebar ? "w-[220px]" : "w-[40px]"}
             h-[95vh]
             shadow-md
             flex
@@ -48,7 +48,7 @@ export const Sidebar = ({ handler, toggleSidebar }) => {
                     sidebarOptions.map((item, i) => {
                         return (
                             <Link href={item.link} key={i}>
-                                <li className="flex cursor-pointer items-center gap-2">
+                                <li className=" w-[95%] rounded-md flex cursor-pointer items-center gap-2 hover:bg-slate-200">
                                     {item.icon}
                                     {
                                         toggleSidebar && <p>{item.title}</p>

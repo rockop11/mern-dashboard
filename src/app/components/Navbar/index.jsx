@@ -50,7 +50,7 @@ export const Navbar = () => {
                         flex-col
                         rounded-lg
                     ">
-                        <li className="list-none h-[35px] p-2 hover:bg-slate-100">Ir al Perfil</li>
+                        <li className="list-none h-[35px] p-2 hover:bg-slate-200">Ir al Perfil</li>
                         <li onClick={logout} className="list-none h-[35px] p-2 hover:bg-slate-100">Cerrar Sesión</li>
                     </div>
                 )

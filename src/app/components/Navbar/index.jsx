@@ -58,8 +58,3 @@ export const Navbar = () => {
         </div>
     )
 }
-
-
-
-// w-[80px]
-// h-[80px]

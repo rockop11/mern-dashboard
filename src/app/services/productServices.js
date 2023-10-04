@@ -25,7 +25,7 @@ export const createProduct = async (data, files) => {
         formData.append("title", title)
 
         for (const brand of brands) {
-            formData.append("brands", brand)
+            formData.append("brands[]", brand)
         }
 
         for (const image of files) {
@@ -44,7 +44,9 @@ export const createProduct = async (data, files) => {
             formData,
             config,
         )
-        console.log("respuesta post registro", response);
+
+        return response
+        
     } catch (err) {
         const errors = err.response.data
         return errors

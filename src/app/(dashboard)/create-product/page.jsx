@@ -66,16 +66,17 @@ const CreateProductPage = () => {
 
     const submitProductDataHandler = async (e) => {
         e.preventDefault()
-        const { errors } = await createProduct(productData, productData.images)
 
-        if (errors) {
-            setErrorForm(errors)
+        const response = await createProduct(productData, productData.images)
+
+        if (response.errors) {
+            setErrorForm(response.errors)
 
             const ErrorMsg = ({ closeToast, toastProps }) => (
                 <div className="flex flex-col gap-4">
                     <h3>No se pudo crear el Producto:</h3>
                     {
-                        errors.map((error, i) => {
+                        response.errors.map((error, i) => {
                             return <li key={i}>{error.msg}</li>
                         })
                     }
@@ -89,7 +90,6 @@ const CreateProductPage = () => {
             })
         }
     }
-
 
     return (
         <div className='

@@ -1,6 +1,9 @@
+import { InfoCard } from "@/app/components"
 
 async function getData() {
-    const res = await fetch('http://localhost:3001/products/products-list')
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_PRODUCTS_URL}/products-list`)
+    // const res = await fetch("http:/localhost:3001/products/products-list")
+
 
     if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary
@@ -10,12 +13,17 @@ async function getData() {
     return res.json()
 }
 
+
 const ProductsPage = async () => {
+
     const { data } = await getData()
 
+
     return (
-        <section>
+        <section className="w-[100%]">
             <h1>Products List Page</h1>
+
+            <InfoCard />
 
             {
                 data.map((product, i) => (

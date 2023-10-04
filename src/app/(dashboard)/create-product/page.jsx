@@ -160,28 +160,28 @@ const CreateProductPage = () => {
                     <input type="checkbox"
                         name="brand"
                         id=""
-                        value="Play Station"
+                        value="play-station"
                         onChange={getCheckboxData}
                     />Play Station
 
                     <input type="checkbox"
                         name="brand"
                         id=""
-                        value="Xbox"
+                        value="xbox"
                         onChange={getCheckboxData}
                     />XBox
 
                     <input type="checkbox"
                         name="brand"
                         id=""
-                        value="Nintendo"
+                        value="nintendo"
                         onChange={getCheckboxData}
                     />Nintendo
 
                     <input type="checkbox"
                         name="brand"
                         id=""
-                        value="Other"
+                        value="other"
                         onChange={getCheckboxData}
                     />Otra
                 </div>

@@ -1,4 +1,4 @@
-import { InfoCard } from "@/app/components"
+import { InfoCardContainer } from "@/app/components"
 
 async function getData() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_PRODUCTS_URL}/products-list`)
@@ -23,7 +23,7 @@ const ProductsPage = async () => {
         <section className="w-[100%]">
             <h1>Products List Page</h1>
 
-            <InfoCard />
+            <InfoCardContainer />
 
             {
                 data.map((product, i) => (

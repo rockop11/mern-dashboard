@@ -152,7 +152,7 @@ const CreateProductPage = () => {
                 >
                     <option value="">Ingrese una categoria</option>
                     <option value="consola">Consola</option>
-                    <option value="juegos" >Juegos</option>
+                    <option value="juegos">Juegos</option>
                     <option value="accesorios">Accesorios</option>
                 </select>
 

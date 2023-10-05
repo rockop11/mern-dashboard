@@ -1,5 +1,6 @@
 import { InfoCard } from ".."
 
+
 async function getProductsListLength() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_PRODUCTS_URL}/products-list`)
     // const res = await fetch("http:/localhost:3001/products/products-list")
@@ -34,25 +35,30 @@ export const InfoCardContainer = async () => {
 
     return (
         <div className="flex justify-center">
+
             <InfoCard
                 title="Total del Productos"
                 productsLength={totalProductsLength.length}
                 borderColor="border-yellow-500"
             />
 
+
             <InfoCard
+                link="/products/play-station"
                 title="Play Station"
                 productsLength={totalPlayStationProductsLength.length}
                 borderColor="border-blue-800"
             />
 
             <InfoCard
+                link='/products/xbox'
                 title="Xbox"
                 productsLength={totalXboxProductsLength.length}
                 borderColor="border-green-400"
             />
 
             <InfoCard
+                link='/products/nintendo'
                 title="Nintendo"
                 productsLength={totalNintendoProductsLength.length}
                 borderColor="border-red-500"

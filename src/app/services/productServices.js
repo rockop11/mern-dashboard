@@ -11,7 +11,8 @@ export const createProduct = async (data, files) => {
         discount,
         price,
         stock,
-        title
+        title,
+        condition
     } = data
 
     try {
@@ -23,6 +24,8 @@ export const createProduct = async (data, files) => {
         formData.append("price", price)
         formData.append("stock", stock)
         formData.append("title", title)
+        formData.append("condition", condition)
+        
 
         for (const brand of brands) {
             formData.append("brands[]", brand)

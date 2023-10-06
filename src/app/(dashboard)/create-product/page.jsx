@@ -15,6 +15,7 @@ const CreateProductPage = () => {
     const descriptionRef = useRef(null)
     const categoryRef = useRef(null)
     const imagesRef = useRef(null)
+    const conditionRef = useRef(null)
 
     const [productData, setProductData] = useState({
         title: "",
@@ -23,6 +24,7 @@ const CreateProductPage = () => {
         stock: "",
         description: "",
         category: "",
+        condition: "",
         brands: [],
         images: []
     })
@@ -38,7 +40,8 @@ const CreateProductPage = () => {
             stock: stockRef.current.value,
             description: descriptionRef.current.value,
             category: categoryRef.current.value,
-            images: imagesRef.current.files
+            images: imagesRef.current.files,
+            condition: conditionRef.current.value
         })
     }
 
@@ -68,6 +71,33 @@ const CreateProductPage = () => {
         e.preventDefault()
 
         const response = await createProduct(productData, productData.images)
+
+        if (response.status === 200) {
+            toast.success("Producto Creado", {
+                position: 'top-center',
+                autoClose: 'false',
+                theme: 'colored',
+            })
+
+            titleRef.current.value = ""
+            priceRef.current.value = ""
+            discountRef.current.value = ""
+            stockRef.current.value = ""
+            descriptionRef.current.value = ""
+            categoryRef.current.value = ""
+            imagesRef.current.value = ""
+
+            if (e.target.children[7].children[0].checked ||
+                e.target.children[7].children[1].checked ||
+                e.target.children[7].children[2].checked ||
+                e.target.children[7].children[3].checked
+            ) {
+                e.target.children[7].children[0].checked = false
+                e.target.children[7].children[1].checked = false
+                e.target.children[7].children[2].checked = false
+                e.target.children[7].children[3].checked = false
+            }
+        }
 
         if (response.errors) {
             setErrorForm(response.errors)
@@ -154,6 +184,16 @@ const CreateProductPage = () => {
                     <option value="consola">Consola</option>
                     <option value="juegos">Juegos</option>
                     <option value="accesorios">Accesorios</option>
+                </select>
+
+                <select name="condition"
+                    className={`border-b w-[80%] focus:outline-none`}
+                    ref={conditionRef}
+                    onChange={productDataHandler}
+                >
+                    <option value="">Ingrese una condicion</option>
+                    <option value="new">Nuevo</option>
+                    <option value="used">Usado</option>
                 </select>
 
                 <div>

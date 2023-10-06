@@ -29,9 +29,9 @@ async function getProductsLengthByBrand(param) {
 
 export const InfoCardContainer = async () => {
     const totalProductsLength = await getProductsListLength()
-    const totalPlayStationProductsLength = await getProductsLengthByBrand("Play Station")
-    const totalXboxProductsLength = await getProductsLengthByBrand("Xbox")
-    const totalNintendoProductsLength = await getProductsLengthByBrand("Nintendo")
+    const totalPlayStationProductsLength = await getProductsLengthByBrand("play-station")
+    const totalXboxProductsLength = await getProductsLengthByBrand("xbox")
+    const totalNintendoProductsLength = await getProductsLengthByBrand("nintendo")
 
     return (
         <div className="flex justify-center">

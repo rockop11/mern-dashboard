@@ -1,9 +1,7 @@
 import { InfoCardContainer, ProductListTable } from "@/app/components"
 
 async function getData() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_PRODUCTS_URL}/products-list`)
-    // const res = await fetch("http:/localhost:3001/products/products-list")
-
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_PRODUCTS_URL}/products-list`, { cache: 'no-store' })
 
     if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary
@@ -24,7 +22,7 @@ const ProductsPage = async () => {
             <h1>Products List Page</h1>
 
             <InfoCardContainer />
-            <ProductListTable productList={data}/>
+            <ProductListTable productList={data} />
 
         </section>
     )

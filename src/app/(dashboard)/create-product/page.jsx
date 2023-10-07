@@ -86,6 +86,7 @@ const CreateProductPage = () => {
             descriptionRef.current.value = ""
             categoryRef.current.value = ""
             imagesRef.current.value = ""
+            conditionRef.current.value = ""
 
             if (e.target.children[7].children[0].checked ||
                 e.target.children[7].children[1].checked ||

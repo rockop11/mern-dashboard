@@ -12,6 +12,7 @@ const AuthContext = createContext({
 
 export const AuthContextProvider = ({ children }) => {
     const router = useRouter()
+    const [modal, setModal] = useState(false)
 
     const loginHandler = async (email, password) => {
         const { token, urlImage, errors } = await login(email, password)
@@ -32,9 +33,15 @@ export const AuthContextProvider = ({ children }) => {
         router.push("/login")
     }
 
+    const modalHandler = () => {
+        setModal(!modal)
+    }
+
     const context = {
+        modal,
         loginHandler,
         logout,
+        modalHandler
     }
 
     return (

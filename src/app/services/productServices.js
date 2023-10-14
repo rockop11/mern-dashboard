@@ -25,7 +25,7 @@ export const createProduct = async (data, files) => {
         formData.append("stock", stock)
         formData.append("title", title)
         formData.append("condition", condition)
-        
+
 
         for (const brand of brands) {
             formData.append("brands[]", brand)
@@ -49,9 +49,20 @@ export const createProduct = async (data, files) => {
         )
 
         return response
-        
+
     } catch (err) {
         const errors = err.response.data
         return errors
     }
+}
+
+export const deleteProduct = async (id) => {
+    try {
+        const response = axios.delete(`${process.env.NEXT_PUBLIC_API_PRODUCTS_URL}/delete-product/${id}`)
+
+        return response
+    } catch (err) {
+        console.log("ERROR", err);
+    }
+
 }

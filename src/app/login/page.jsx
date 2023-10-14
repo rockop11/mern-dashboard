@@ -40,6 +40,7 @@ const LoginPage = () => {
         gap-12
         shadow-lg
         py-4
+        rounded-lg
       ">
         <h2>Ingresá a la Plataforma</h2>
 

@@ -88,16 +88,11 @@ const CreateProductPage = () => {
             imagesRef.current.value = ""
             conditionRef.current.value = ""
 
-            if (e.target.children[7].children[0].checked ||
-                e.target.children[7].children[1].checked ||
-                e.target.children[7].children[2].checked ||
-                e.target.children[7].children[3].checked
-            ) {
-                e.target.children[7].children[0].checked = false
-                e.target.children[7].children[1].checked = false
-                e.target.children[7].children[2].checked = false
-                e.target.children[7].children[3].checked = false
-            }
+            e.target.children[7].children[0].checked = false
+            e.target.children[7].children[1].checked = false
+            e.target.children[7].children[2].checked = false
+            e.target.children[7].children[3].checked = false
+
         }
 
         if (response.errors) {
@@ -116,7 +111,7 @@ const CreateProductPage = () => {
 
             toast.error(<ErrorMsg />, {
                 position: 'top-center',
-                autoClose: 'false',
+                autoClose: false,
                 theme: 'colored',
             })
         }
@@ -193,8 +188,8 @@ const CreateProductPage = () => {
                     onChange={productDataHandler}
                 >
                     <option value="">Ingrese una condicion</option>
-                    <option value="new">Nuevo</option>
-                    <option value="used">Usado</option>
+                    <option value="nuevo">Nuevo</option>
+                    <option value="usado">Usado</option>
                 </select>
 
                 <div>

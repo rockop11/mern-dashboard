@@ -1,6 +1,8 @@
 export { ActionButton } from "./ActionButton"
+export { ImageCarrousel } from "./ImageCarrousel"
 export { InfoCard } from "./InfoCard"
 export { InfoCardContainer } from "./InfoCardContainer"
 export { Navbar } from "./Navbar"
+export { ProductActionButton } from "./ProductActionButton"
 export { ProductListTable } from "./ProductListTable"
 export { Sidebar } from "./Sidebar"

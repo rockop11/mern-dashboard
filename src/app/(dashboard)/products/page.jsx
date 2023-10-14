@@ -16,14 +16,11 @@ const ProductsPage = async () => {
 
     const { data } = await getData()
 
-
     return (
         <section className="w-[100%]">
             <h1>Products List Page</h1>
-
             <InfoCardContainer />
             <ProductListTable productList={data} />
-
         </section>
     )
 }

@@ -1,4 +1,4 @@
-import { InfoCard } from ".."
+import { InfoCard } from "@/app/components"
 
 
 async function getProductsListLength() {

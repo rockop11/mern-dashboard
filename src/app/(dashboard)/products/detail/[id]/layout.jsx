@@ -9,10 +9,11 @@ import { AiFillCloseCircle } from "react-icons/ai"
 export default function ProductDetailLayout({ children, params }) {
     const { id } = params
     const router = useRouter()
-    const { modal, modalHandler } = useContext(AuthContext)
+    const { modal, closeModalHandler } = useContext(AuthContext)
 
     const deleteProductHandler = async () => {
         await deleteProduct(id)
+        closeModalHandler()
         router.push("/products")
     }
 
@@ -42,7 +43,7 @@ export default function ProductDetailLayout({ children, params }) {
                             items-center
                             gap-4
                         ">
-                            <button onClick={modalHandler} className="flex justify-end w-[100%] cursor-pointer">
+                            <button onClick={closeModalHandler} className="flex justify-end w-[100%] cursor-pointer">
                                 <AiFillCloseCircle size={24}/>
                             </button>
                             <h3>Desea eliminar el Producto?</h3>

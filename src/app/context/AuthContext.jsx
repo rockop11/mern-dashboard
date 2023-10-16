@@ -33,15 +33,20 @@ export const AuthContextProvider = ({ children }) => {
         router.push("/login")
     }
 
-    const modalHandler = () => {
-        setModal(!modal)
+    const openModalHandler = () => {
+        setModal(true)
+    }
+
+    const closeModalHandler = () => {
+        setModal(false)
     }
 
     const context = {
         modal,
         loginHandler,
         logout,
-        modalHandler
+        openModalHandler,
+        closeModalHandler
     }
 
     return (

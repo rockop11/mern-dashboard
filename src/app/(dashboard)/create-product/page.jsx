@@ -75,7 +75,7 @@ const CreateProductPage = () => {
         if (response.status === 200) {
             toast.success("Producto Creado", {
                 position: 'top-center',
-                autoClose: 'false',
+                autoClose: true,
                 theme: 'colored',
             })
 
@@ -88,11 +88,15 @@ const CreateProductPage = () => {
             imagesRef.current.value = ""
             conditionRef.current.value = ""
 
-            e.target.children[7].children[0].checked = false
-            e.target.children[7].children[1].checked = false
-            e.target.children[7].children[2].checked = false
-            e.target.children[7].children[3].checked = false
+            e.target[7].checked = false
+            e.target[8].checked = false
+            e.target[9].checked = false
+            e.target[10].checked = false
 
+            setProductData({
+                ...productData,
+                brands: []
+            })
         }
 
         if (response.errors) {

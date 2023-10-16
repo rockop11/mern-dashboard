@@ -4,11 +4,11 @@ import { useContext } from "react";
 import AuthContext from "@/app/context/AuthContext";
 
 export const ProductActionButton = ({ title, backgroundColor }) => {
-    const { modalHandler } = useContext(AuthContext)
+    const { openModalHandler } = useContext(AuthContext)
 
     const actionButtonHandler = () => {
         if(title === "Eliminar"){
-            modalHandler()
+            openModalHandler()
         }
 
         if(title === "Editar") {

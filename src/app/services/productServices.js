@@ -1,21 +1,20 @@
 import axios from "axios";
 
 export const createProduct = async (data, files) => {
-
-    const token = JSON.parse(localStorage.getItem("token"))
-
-    const {
-        brands,
-        category,
-        description,
-        discount,
-        price,
-        stock,
-        title,
-        condition
-    } = data
-
     try {
+        const token = JSON.parse(localStorage.getItem("token"))
+
+        const {
+            brands,
+            category,
+            description,
+            discount,
+            price,
+            stock,
+            title,
+            condition
+        } = data
+
         let formData = new FormData();
 
         formData.append("category", category)
@@ -25,7 +24,6 @@ export const createProduct = async (data, files) => {
         formData.append("stock", stock)
         formData.append("title", title)
         formData.append("condition", condition)
-
 
         for (const brand of brands) {
             formData.append("brands[]", brand)
@@ -47,7 +45,6 @@ export const createProduct = async (data, files) => {
             formData,
             config,
         )
-
         return response
 
     } catch (err) {

@@ -5,7 +5,6 @@ import Image from "next/image"
 import { BsArrowRightSquareFill, BsArrowLeftSquareFill } from "react-icons/bs"
 
 export const ImageCarrousel = ({ images }) => {
-
     const [currentIndex, setCurrentIndex] = useState(0)
 
     const handleNext = () => {

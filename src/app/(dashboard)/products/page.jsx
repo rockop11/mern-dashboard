@@ -13,7 +13,6 @@ async function getData() {
 
 
 const ProductsPage = async () => {
-
     const { data } = await getData()
 
     return (

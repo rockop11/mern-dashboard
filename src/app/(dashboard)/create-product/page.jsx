@@ -4,7 +4,8 @@ import { useState, useRef } from "react"
 import { createProduct } from "@/app/services/productServices";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Image from "next/image";
+import { AiFillCloseCircle } from "react-icons/ai"
 
 const CreateProductPage = () => {
 
@@ -65,6 +66,19 @@ const CreateProductPage = () => {
                 brands: uncheckedOption
             })
         }
+    }
+
+    const imageSelectedHandler = (name) => {
+        const images = Array.from(productData.images)
+
+        const filteredImages = images.filter((image) => {
+            return image.name != name;
+        })
+
+        setProductData({
+            ...productData,
+            images: filteredImages
+        })
     }
 
     const submitProductDataHandler = async (e) => {
@@ -136,31 +150,33 @@ const CreateProductPage = () => {
             <form
                 onSubmit={submitProductDataHandler}
                 className='
-                flex flex-col items-center
-                w-[50%] gap-12 py-4
+                flex justify-center
+                flex-wrap
+                w-[90%] gap-12 py-4
+                mt-8
             '>
                 <input type="text"
                     placeholder="Nombre de producto"
-                    className={`border-b w-[80%] focus:outline-none ${errorsForm.length && 'border-b border-pink-600'}`}
+                    className={`border-b w-[40%] focus:outline-none px-2 ${errorsForm.length && 'border-b border-pink-600'}`}
                     ref={titleRef} onChange={productDataHandler}
                 />
 
                 <input type="number"
                     placeholder="Precio"
-                    className={`border-b w-[80%] focus:outline-none ${errorsForm.length && 'border-b border-pink-600'}`}
+                    className={`border-b w-[40%] focus:outline-none px-2 ${errorsForm.length && 'border-b border-pink-600'}`}
                     ref={priceRef} onChange={productDataHandler}
                 />
 
                 <input type="number"
                     placeholder="Descuento"
-                    className={`border-b w-[80%] focus:outline-none ${errorsForm.length && 'border-b border-pink-600'}`}
+                    className={`border-b w-[40%] focus:outline-none px-2 ${errorsForm.length && 'border-b border-pink-600'}`}
                     ref={discountRef}
                     onChange={productDataHandler}
                 />
 
                 <input type="number"
                     placeholder="Stock"
-                    className={`border-b w-[80%] focus:outline-none ${errorsForm.length && 'border-b border-pink-600'}`}
+                    className={`border-b w-[40%] focus:outline-none px-2 ${errorsForm.length && 'border-b border-pink-600'}`}
                     ref={stockRef}
                     onChange={productDataHandler}
                 />
@@ -168,15 +184,15 @@ const CreateProductPage = () => {
                 <textarea name=""
                     id=""
                     cols="30"
-                    rows="10"
+                    rows="5"
                     placeholder="Ingrese la descripción"
-                    className={`border w-[80%] focus:outline-none ${errorsForm.length && 'border border-pink-600'}`}
+                    className={`border w-[86%] focus:outline-none px-2 ${errorsForm.length && 'border border-pink-600'}`}
                     ref={descriptionRef}
                     onChange={productDataHandler}
                 />
 
                 <select name="category"
-                    className={`border-b w-[80%] focus:outline-none`}
+                    className={`border-b w-[40%] focus:outline-none`}
                     ref={categoryRef}
                     onChange={productDataHandler}
                 >
@@ -187,7 +203,7 @@ const CreateProductPage = () => {
                 </select>
 
                 <select name="condition"
-                    className={`border-b w-[80%] focus:outline-none`}
+                    className={`border-b w-[40%] focus:outline-none`}
                     ref={conditionRef}
                     onChange={productDataHandler}
                 >
@@ -196,40 +212,47 @@ const CreateProductPage = () => {
                     <option value="usado">Usado</option>
                 </select>
 
-                <div>
-                    <input type="checkbox"
-                        name="brand"
-                        id=""
-                        value="play-station"
-                        onChange={getCheckboxData}
-                    />Play Station
+                <div className="w-[60%] flex items-center justify-center gap-8">
+                    <div className="flex gap-2">
+                        <input type="checkbox"
+                            name="brand"
+                            id=""
+                            value="play-station"
+                            onChange={getCheckboxData}
+                        />Play Station
+                    </div>
 
-                    <input type="checkbox"
-                        name="brand"
-                        id=""
-                        value="xbox"
-                        onChange={getCheckboxData}
-                    />XBox
+                    <div className="flex gap-2">
+                        <input type="checkbox"
+                            name="brand"
+                            id=""
+                            value="xbox"
+                            onChange={getCheckboxData}
+                        />XBox
+                    </div>
 
-                    <input type="checkbox"
-                        name="brand"
-                        id=""
-                        value="nintendo"
-                        onChange={getCheckboxData}
-                    />Nintendo
+                    <div className="flex gap-2">
+                        <input type="checkbox"
+                            name="brand"
+                            id=""
+                            value="nintendo"
+                            onChange={getCheckboxData}
+                        />Nintendo
+                    </div>
 
-                    <input type="checkbox"
-                        name="brand"
-                        id=""
-                        value="other"
-                        onChange={getCheckboxData}
-                    />Otra
+                    <div className="flex gap-2">
+                        <input type="checkbox"
+                            name="brand"
+                            id=""
+                            value="other"
+                            onChange={getCheckboxData}
+                        />Otra
+                    </div>
                 </div>
 
 
-
                 <label htmlFor="images"
-                    className={`border-b w-[80%] focus:outline-none ${errorsForm.length && 'border-b border-pink-600'}`}
+                    className={`border-b w-[70%] focus:outline-none text-center ${errorsForm.length && 'border-b border-pink-600'}`}
                 >
                     ingresa imagenes del producto
                     <input type="file"
@@ -242,9 +265,31 @@ const CreateProductPage = () => {
                     />
                 </label>
 
+                {
+                    productData.images.length > 0 && (
+                        <div className="w-[80%] h-[80px] flex justify-center gap-4">
+                            {
+                                Array.from(productData.images).map((image, i) => {
+                                    return (
+                                        <div key={i} className="w-[70px] h-[90px] relative">
+                                            <AiFillCloseCircle className="absolute z-10 text-gray-100 right-1 top-1 cursor-pointer" size={16} onClick={() => imageSelectedHandler(image.name)} />
+                                            <Image src={URL.createObjectURL(image)} fill alt="product-image" className="rounded-md" />
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    )
+                }
+
+
+
+
                 <button
                     className="w-[30%] border p-1 rounded-md text-gray-500 hover:bg-black hover:text-white transition-all"
-                >Crear Producto</button>
+                >
+                    Crear Producto
+                </button>
             </form>
         </div>
     )

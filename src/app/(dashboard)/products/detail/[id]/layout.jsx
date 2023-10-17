@@ -38,7 +38,7 @@ export default function ProductDetailLayout({ children, params }) {
                             absolute top-[30%] left-[50%]
                             translate-y-[-30%]
                             translate-x-[-50%]
-                            z-10
+                            z-20
                             flex flex-col
                             items-center
                             gap-4

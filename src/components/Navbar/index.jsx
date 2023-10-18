@@ -18,7 +18,6 @@ export const Navbar = () => {
 
     return (
         <div
-            onClick={toggleUserOptionsHandler}
             className="
             border 
             shadow-md
@@ -28,12 +27,12 @@ export const Navbar = () => {
             items-center
             justify-end
             pr-[10px]
-            cursor-pointer
         ">
             {
                 storedUser && (
                     <Image src={storedUser?.urlImage}
-                        className="rounded-[50%] w-auto h-auto" width={20}
+                        onClick={toggleUserOptionsHandler}
+                        className="rounded-[50%] w-auto h-auto cursor-pointer" width={20}
                         height={20} alt={"user img"}
                     />
                 )
@@ -49,9 +48,10 @@ export const Navbar = () => {
                         flex
                         flex-col
                         rounded-lg
+                        z-50
                     ">
-                        <li className="list-none h-[35px] p-2 hover:bg-slate-200">Ir al Perfil</li>
-                        <li onClick={logout} className="list-none h-[35px] p-2 hover:bg-slate-100">Cerrar Sesión</li>
+                        <li className="list-none h-[35px] p-2 hover:bg-slate-200 cursor-pointer">Ir al Perfil</li>
+                        <li onClick={logout} className="list-none h-[35px] p-2 hover:bg-slate-200 cursor-pointer">Cerrar Sesión</li>
                     </div>
                 )
             }

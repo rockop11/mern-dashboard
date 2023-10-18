@@ -1,6 +1,7 @@
 import {
   ImageCarrousel,
-  ProductActionButton
+  ProductActionButton,
+  ProductInfo
 } from "@/components";
 
 async function getProductDetail(id) {
@@ -19,40 +20,25 @@ const ProductDetailPage = async ({ params }) => {
 
   return (
     <section className="w-[100%] p-4">
-      <h1 className="text-center text-[28px]">Detalle De Producto</h1>
-      <div className="flex gap-4">
+
+      <h1 className="text-center text-[28px] mb-8">Detalle De Producto</h1>
+
+      <div className="flex gap-8 justify-center ">
         <ImageCarrousel images={images} />
 
+        <div className="w-[50%] flex flex-col gap-8">
+          <ProductInfo
+            title={data.title}
+            price={data.price}
+            stock={data.stock}
+            discount={data.discount}
+            category={data.category}
+            condition={data.condition}
+            description={data.description}
+            brands={data.brands}
+          />
 
-        <article className="w-[50%]">
-          <h2 className="text-center text-2xl">{data.title}</h2>
-
-          <div className="
-            border border-slate-500 
-            flex justify-around 
-            m-auto 
-            w-[70%] 
-            rounded-md
-          ">
-            <div>
-              <p>Precio:</p>
-              <p>Stock:</p>
-              <p>Descuento:</p>
-              <p>Categoría:</p>
-              <p>Condición:</p>
-            </div>
-
-            <div>
-              <p>$ {data.price}</p>
-              <p>{data.stock}</p>
-              <p>% {data.discount}</p>
-              <p>{data.category}</p>
-              <p>{data.condition}</p>
-            </div>
-          </div>
-
-          <div className="flex justify-center mt-[20px] gap-4">
-
+          <div className="flex gap-4">
             <ProductActionButton
               title="Editar"
               backgroundColor="bg-blue-700"
@@ -62,12 +48,9 @@ const ProductDetailPage = async ({ params }) => {
               title="Eliminar"
               backgroundColor="bg-red-500"
             />
-
           </div>
-        </article>
+        </div>
       </div>
-
-      <p>{data.description}</p>
     </section>
   )
 }

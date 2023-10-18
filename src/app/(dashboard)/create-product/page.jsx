@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef } from "react"
-import { createProduct } from "@/app/services/productServices";
+import { createProduct } from "@/services/productServices";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Image from "next/image";

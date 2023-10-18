@@ -1,8 +1,8 @@
 "use client"
 
 import { useContext } from "react"
-import AuthContext from "@/app/context/AuthContext"
-import { deleteProduct } from "@/app/services/productServices"
+import AuthContext from "@/context/AuthContext"
+import { deleteProduct } from "@/services/productServices"
 import { useRouter } from "next/navigation"
 import { AiFillCloseCircle } from "react-icons/ai"
 

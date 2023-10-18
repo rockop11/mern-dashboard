@@ -1,7 +1,7 @@
 import {
   ImageCarrousel,
   ProductActionButton
-} from "@/app/components";
+} from "@/components";
 
 async function getProductDetail(id) {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_PRODUCTS_URL}/detail/${id}`, { cache: 'no-store' });

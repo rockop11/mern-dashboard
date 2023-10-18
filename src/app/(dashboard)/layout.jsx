@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react"
-import { Navbar, Sidebar } from "../components"
+import { Navbar, Sidebar } from "../../components"
 
 const DashboardLayout = ({ children }) => {
 

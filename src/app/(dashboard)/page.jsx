@@ -1,6 +1,6 @@
 "use client"
 
-import { ActionButton } from "../components"
+import { ActionButton } from "../../components"
 
 export default function Home() {
 

@@ -1,7 +1,7 @@
 "use client"
 
 import { useContext } from "react";
-import AuthContext from "@/app/context/AuthContext";
+import AuthContext from "@/context/AuthContext";
 
 export const ProductActionButton = ({ title, backgroundColor }) => {
     const { openModalHandler } = useContext(AuthContext)

@@ -1,8 +1,8 @@
 "use client"
 
 import { useContext, useState } from "react"
-import { useAuth } from "@/app/hooks/useAuth"
-import AuthContext from "@/app/context/AuthContext"
+import { useAuth } from "@/hooks/useAuth"
+import AuthContext from "@/context/AuthContext"
 import Image from "next/image"
 
 export const Navbar = () => {

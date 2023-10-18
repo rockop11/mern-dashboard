@@ -1,4 +1,4 @@
-import { InfoCardContainer, ProductListTable } from "@/app/components"
+import { InfoCardContainer, ProductListTable } from "@/components"
 
 async function getData() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_PRODUCTS_URL}/products-list`, { cache: 'no-store' })

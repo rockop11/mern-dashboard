@@ -37,6 +37,7 @@ export const InfoCardContainer = async () => {
         <div className="flex justify-center">
 
             <InfoCard
+                link="/products"
                 title="Total del Productos"
                 productsLength={totalProductsLength.length}
                 borderColor="border-yellow-500"

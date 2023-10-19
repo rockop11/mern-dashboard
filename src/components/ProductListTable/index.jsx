@@ -9,7 +9,7 @@ export const ProductListTable = ({ productList }) => {
         { title: "Precio" },
         { title: "Stock" },
         { title: "Categoria" },
-        {title: "Detalle"}
+        { title: "Detalle" }
     ]
 
 
@@ -29,14 +29,14 @@ export const ProductListTable = ({ productList }) => {
                 {
                     productList.map(product => {
                         return (
-                            
-                                <tr key={product._id} className="hover:bg-stone-200">
-                                    <td>{product.title}</td>
-                                    <td>$ {product.price}</td>
-                                    <td>{product.stock}</td>
-                                    <td>{product.category}</td>
-                                    <td><Link href={`/products/detail/${product._id}`}>Ir a Detalle</Link></td>
-                                </tr>
+
+                            <tr key={product._id} className="hover:bg-stone-200">
+                                <td>{product.title}</td>
+                                <td>$ {product.price}</td>
+                                <td>{product.stock}</td>
+                                <td>{product.category}</td>
+                                <td><Link href={`/products/detail/${product._id}`}>Ir a Detalle</Link></td>
+                            </tr>
                         )
                     })
                 }

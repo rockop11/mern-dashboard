@@ -11,6 +11,10 @@ async function getData() {
     return res.json()
 }
 
+export const metadata = {
+    title: "Productos"
+}
+
 
 const ProductsPage = async () => {
     const { data } = await getData()

@@ -1,10 +1,12 @@
 "use client"
 
 import { useContext } from "react";
+import { useRouter } from "next/navigation";
 import AuthContext from "@/context/AuthContext";
 
-export const ProductActionButton = ({ title, backgroundColor }) => {
+export const ProductActionButton = ({ title, backgroundColor, id }) => {
     const { openModalHandler } = useContext(AuthContext)
+    const router = useRouter()
 
     const actionButtonHandler = () => {
         if(title === "Eliminar"){
@@ -12,7 +14,7 @@ export const ProductActionButton = ({ title, backgroundColor }) => {
         }
 
         if(title === "Editar") {
-            console.log("la accion es editar");
+            router.push(`/products/edit/${id}`)
         }
     }
 

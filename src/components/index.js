@@ -1,4 +1,5 @@
 export { ActionButton } from "./ActionButton"
+export { EditProductForm } from "./EditProductForm"
 export { ImageCarrousel } from "./ImageCarrousel"
 export { InfoCard } from "./InfoCard"
 export { InfoCardContainer } from "./InfoCardContainer"

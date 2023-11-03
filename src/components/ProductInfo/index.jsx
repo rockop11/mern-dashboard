@@ -1,5 +1,5 @@
 export const ProductInfo = ({ title, price, stock, discount, category, condition, description, brands }) => {
-    
+
     return (
         <article className="w-[100%] border border-slate-500 rounded-md">
             <h2 className="text-center text-[32px] mb-4 font-bold">{title}</h2>
@@ -44,11 +44,11 @@ export const ProductInfo = ({ title, price, stock, discount, category, condition
                 <hr />
                 <h3 className="font-medium">Disponible para:</h3>
                 <ul className="pl-4">
-                    {brands.map(({brand}) => {
-                        if(brand === 'play-station') return <li className="list-disc">Play Station</li>
-                        if(brand === 'xbox') return <li className="list-disc">Xbox</li>
-                        if(brand === 'nintendo') return <li className="list-disc">Nintendo</li>
-                        if(brand === 'other') return <li className="list-disc">Otra</li>
+                    {brands.map(({ brand, i }) => {
+                        if (brand === 'play-station') return <li key={i} className="list-disc">Play Station</li>
+                        if (brand === 'xbox') return <li key={i} className="list-disc">Xbox</li>
+                        if (brand === 'nintendo') return <li key={i} className="list-disc">Nintendo</li>
+                        if (brand === 'other') return <li key={i} className="list-disc">Otra</li>
                     })}
                 </ul>
                 <hr />

@@ -40,6 +40,7 @@ const ProductDetailPage = async ({ params }) => {
 
           <div className="flex gap-4">
             <ProductActionButton
+              id={id}
               title="Editar"
               backgroundColor="bg-blue-700"
             />
